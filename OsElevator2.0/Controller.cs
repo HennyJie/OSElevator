@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Threading;
 
-namespace OsElevator2._0
+namespace OsElevator
 {
     class Controller
-   {
-     
-    //请求链表
+   {    
+        //请求链表
         private List<Request> listRes;
 
         //每个电梯是否可以使用
@@ -30,22 +29,20 @@ namespace OsElevator2._0
             }
             listRes = new List<Request>();
             elevator = ele;
-
         }
 
+        //判断电梯n能否使用
         public bool CanUse(int n)
         {
             return couldUse[n];
         }
-
+        //设置电梯n的状态
         public void SetUse(int n, bool ability)
         {
             couldUse[n] = ability;
         }
 
-  
-
-        //为一个请求分配可以响应的电梯
+        //为一个请求分配电梯去响应
         public bool SolveRequest(Request re)
         {
             int minDis = 1000;
@@ -68,7 +65,6 @@ namespace OsElevator2._0
                                 {
                                     minDis = dis;
                                     eleNum = i;
-
                                 }
                             }
                             break;
@@ -89,7 +85,6 @@ namespace OsElevator2._0
                                 eleNum = i;
                             }
                             break;
-
                     }
                 }
             }
@@ -121,8 +116,7 @@ namespace OsElevator2._0
             return true;
         }
 
-
-        //调度类的运行函数
+        //调度控制类的运行函数
         public void Run()
         {
             Stack<int> willDel = new Stack<int>();
@@ -144,7 +138,5 @@ namespace OsElevator2._0
                 Thread.Sleep(300);
             }
         }
-
-
     }
 }
